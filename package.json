@@ -9,18 +9,14 @@
     "template"
   ],
   "scripts": {
-
-    "start": "concurrently \"npm run sass\" \"npm run server\"",
-    "sass": "sass public/assets/sass/style.scss public/style.css --watch",
+    "start": "npm run server",
     "server": "http-server -o -c-1 -a localhost -p 8080 ./public"
   },
   "dependencies": {
     "node": "^21.2.0",
-    "sass": "^1.69.5",
     "ws": "^8.14.2"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
     "http-server": "^14.1.1"
   }
 }
