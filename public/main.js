@@ -21,7 +21,7 @@ function main() {
         });
 
         newSocket.addEventListener('close', (event) => {
-            console.log(`Connexion fermée (${event.code}): ${event.reason}`);
+            console.log(`Connexion impossible (${event.code}): ${event.reason}`);
         });
 
         return newSocket;
