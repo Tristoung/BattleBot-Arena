@@ -7,9 +7,13 @@ class MyGame {
     constructor() {
         const config = {
             type: AUTO,
-            width: 800,
-            height: 600,
+            width: 1200,
+            height: 800,
+            dom: {
+                createContainer: true,
+            },
             scene: [MenuScene, GameScene],
+            parent: document,
         };
 
         this.game = new Game(config);

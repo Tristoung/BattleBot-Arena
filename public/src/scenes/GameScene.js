@@ -6,12 +6,12 @@ export class GameScene extends Scene {
     }
 
     preload() {
-        this.load.image('backgroundGame', 'assets/images/icon.png');
+        this.load.image('backgroundGame', 'assets/images/background.jpg');
         // Chargez d'autres ressources de jeu ici
     }
 
     create() {
-        this.add.image(400, 300, 'backgroundGame');
+        this.add.image(600, 400, 'backgroundGame');
         // Initialisation du jeu
     }
 
