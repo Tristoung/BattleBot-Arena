@@ -14,7 +14,7 @@ export class MenuScene extends Scene {
     }
 
     create() {
-        this.add.image(600, 400, 'backgroundMenu');
+        const background = this.add.image(this.scale.width / 2, this.scale.height / 2, 'backgroundMenu');
 
         // Récupérer le contenu HTML
         const htmlContent = this.cache.html.get('nameform');
