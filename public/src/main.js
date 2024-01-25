@@ -1,16 +1,17 @@
-// main.js
 import { Game, AUTO, Scale } from '../phaser.esm.js';
 import { MenuScene } from './scenes/MenuScene.js';
 import { GameScene } from './scenes/GameScene.js';
 
 class MyGame {
     constructor() {
+        this.width = 1280;
+        this.height = 720;
         const config = {
             type: AUTO,
-            width: window.innerWidth,
-            height: window.innerHeight,
+            width: this.width,
+            height: this.height,
             dom: {
-                createContainer: true,
+                createContainer: true, // permet d'ajouter un élément html dans le canvas
             },
             scene: [MenuScene, GameScene],
             parent: document,
@@ -21,19 +22,36 @@ class MyGame {
 
         this.game = new Game(config);
 
-        // Démarrage avec la scène du menu
         this.game.scene.start('MenuScene');
 
-        // Changer la taille de l'écran responsivement
-        window.addEventListener('resize', this.resize.bind(this));
+        // Responsivité
+        window.addEventListener('resize', ()=>{
+            this.resize();
+
+        });
         this.resize();
     }
-    resize() {
-        // const canvasElement = document.querySelector('canvas'); // Sélectionnez l'élément canvas
-        // canvasElement.style.marginLeft = `-${10}px`;
-        
-    }
 
+    resize() {
+        const canvas = this.game.canvas;
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        if ((canvas.clientWidth - windowWidth) > 0) {
+            canvas.style.marginLeft = `-${(canvas.clientWidth - windowWidth) / 2}px`; // Marge pour centrer le canvas WIDTH
+        } else {
+            canvas.style.marginLeft = '0px';
+        }
+
+        if ((canvas.clientHeight - windowHeight > 0)) {
+            canvas.style.marginTop = `-${(canvas.clientHeight - windowHeight) / 2}px`; // Marge pour centrer le canvas HEIGHT
+        } else {
+            canvas.style.marginTop = '0px';
+        }
+
+        this.game.config.width = windowWidth;
+        this.game.config.height = windowHeight;
+    }
 }
 
 const myGame = new MyGame();
