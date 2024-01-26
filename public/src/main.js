@@ -4,8 +4,8 @@ import { GameScene } from './scenes/GameScene.js';
 
 class MyGame {
     constructor() {
-        this.width = 1280;
-        this.height = 720;
+        this.width = 1920;
+        this.height = 1080;
         const config = {
             type: AUTO,
             width: this.width,
@@ -16,41 +16,14 @@ class MyGame {
             scene: [MenuScene, GameScene],
             parent: document,
             scale: {
-                mode: Scale.ENVELOP
+                mode: Scale.ENVELOP,
+                autoCenter: Scale.CENTER_BOTH,
             },
         };
 
         this.game = new Game(config);
 
         this.game.scene.start('MenuScene');
-
-        // Responsivité
-        window.addEventListener('resize', ()=>{
-            this.resize();
-
-        });
-        this.resize();
-    }
-
-    resize() {
-        const canvas = this.game.canvas;
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-
-        if ((canvas.clientWidth - windowWidth) > 0) {
-            canvas.style.marginLeft = `-${(canvas.clientWidth - windowWidth) / 2}px`; // Marge pour centrer le canvas WIDTH
-        } else {
-            canvas.style.marginLeft = '0px';
-        }
-
-        if ((canvas.clientHeight - windowHeight > 0)) {
-            canvas.style.marginTop = `-${(canvas.clientHeight - windowHeight) / 2}px`; // Marge pour centrer le canvas HEIGHT
-        } else {
-            canvas.style.marginTop = '0px';
-        }
-
-        this.game.config.width = windowWidth;
-        this.game.config.height = windowHeight;
     }
 }
 
