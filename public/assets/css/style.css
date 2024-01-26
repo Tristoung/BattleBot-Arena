@@ -4,18 +4,16 @@ body {
 }
 
 .connection-menu {
-    border-radius: 10px;
-    border-color: #000000;
-    
     height: 600px;
     width: 750px;
+    margin-top: 20% ;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     
     font-family:Arial, "Helvetica", sans-serif;
-    font-size:20px;
+    font-size:25px;
     color: #FFF;
 }
 
@@ -27,16 +25,9 @@ body {
     margin: 10px;;
 }
 
-#menu-logo {
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-}
-
 input[type="text"] {
     width: 70%;
     height: 100%;
-    background: linear-gradient(top, #d6d7d7, #dee0e0);
     border: 1px solid #000000;
     outline: 1px solid #ffffff;
     border-radius: 3px;
@@ -45,10 +36,10 @@ input[type="text"] {
     margin: 10px;
     padding-left: 5%;
     transition: box-shadow 0.3s;
+    font-size: 24px;
 }
 input[type="text"]:focus {
     box-shadow: 0 0 4px 1px rgba(55, 166, 155, 0.3);
-    outline: 0;
 }
 
 input[type="submit"] {
@@ -56,7 +47,7 @@ input[type="submit"] {
     height:100%;
     display:block;
     font-family:Arial, "Helvetica", sans-serif;
-    font-size:16px;
+    font-size:24px;
     font-weight:bold;
     color:#fff;
     text-decoration:none;
@@ -66,7 +57,8 @@ input[type="submit"] {
     margin: 10px;
     position:relative;
     cursor:pointer;
-    border: none;  
+    border: 1px solid #000000;
+    outline: 1px solid #ffffff;
     background-color: #37a69b;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
