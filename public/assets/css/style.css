@@ -1,71 +1,76 @@
+/* Toute pages */
 body {
     margin: 0;
     overflow: hidden;
-}
-
-.connection-menu {
-    height: 600px;
-    width: 750px;
-    margin-top: 20% ;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     
     font-family:Arial, "Helvetica", sans-serif;
     font-size:25px;
     color: #FFF;
 }
 
-.input-container {
+.element-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    width: 50%;
-    margin: 10px;;
 }
 
 input[type="text"] {
-    width: 70%;
-    height: 100%;
-    border: 1px solid #000000;
-    outline: 1px solid #ffffff;
-    border-radius: 3px;
-    box-sizing: border-box;
     color: #696969;
-    margin: 10px;
-    padding-left: 5%;
-    transition: box-shadow 0.3s;
     font-size: 24px;
 }
 input[type="text"]:focus {
-    box-shadow: 0 0 4px 1px rgba(55, 166, 155, 0.3);
+
 }
 
 input[type="submit"] {
-    width:30%;
-    height:100%;
-    display:block;
-    font-family:Arial, "Helvetica", sans-serif;
     font-size:24px;
-    font-weight:bold;
-    color:#fff;
-    text-decoration:none;
-    text-transform:uppercase;
+    color:#000000;
     text-align:center;
-    padding-top:6px;
-    margin: 10px;
-    position:relative;
     cursor:pointer;
-    border: 1px solid #000000;
-    outline: 1px solid #ffffff;
-    background-color: #37a69b;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius:5px;
 }
 input[type="submit"]:active {
-    top:2px;
-    background-color: #33968c;
+    
 }
+
+/* Page home */
+#home-menu-container {
+    flex-direction: column;
+    align-items: center;
+}
+#home-input-container {
+    flex-direction: row;
+    align-items: center;
+}
+
+#home-username-input {
+
+}
+#home-connect-button {
+    
+}
+
+/* Page connected */
+#connected-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Page join */
+#join-input-container-join {
+    flex-direction: row;
+}
+#join-input-container-browse {
+    flex-direction: column;
+}
+
+
+/* Page create */
+
+
+#create-input-container-launch {
+    flex-direction: row;
+}
+
+/* Page options */
+

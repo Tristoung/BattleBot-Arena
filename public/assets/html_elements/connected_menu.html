@@ -1,11 +1,19 @@
 <link rel="stylesheet" href="../../assets/css/style.css">
 
-<div class="connection-menu">
+<div class="element-container" id="connected-menu-container">
 
-    Connecté !
+    <div id="connected-input-container">
+        <span>Héberger</span>
+        <input type="submit" value="Créer une salle" id="connected-create-button">
+        <span>Public</span>
+        <input type="submit" value="Parcourir les salles" id="connected-join-button">
+        <span>Privé</span>
+        <div id="join-input-container-join">
+            <input type="text" placeholder="Code de la salle" id="join-roomName-input" >
+            <input type="submit" value="Rejoindre" id="join-join-button">
+        </div>
 
-    <div class="joincreate-container">
-        <input type="submit" value="Join" id="loginButton" name="loginButton">
-        <input type="submit" value="Create" id="loginButton" name="loginButton">
+
     </div>
+
 </div>
