@@ -1,21 +1,36 @@
 import { Scene } from '../../phaser.esm.js';
+import { Player } from '../sprites/PlayerSprite.js';
 
 export class GameScene extends Scene {
     constructor() {
         super({ key: 'GameScene' });
+
+        this.player = null;
+        this.defaultInputs = {
+            up: 'Z',
+            down: 'S',
+            left: 'Q',
+            right: 'D',
+        }
     }
 
     preload() {
-        this.load.image('backgroundGame', 'assets/images/background.jpg');
-        // Chargez d'autres ressources de jeu ici
+        this.load.image('player', 'assets/images/icon.png');
     }
 
     create() {
-        this.add.image(600, 400, 'backgroundGame');
-        // Initialisation du jeu
+        this.player = new Player(this, 100, 100, 'player', this.defaultInputs);
+        // this.player.updateKeys({
+        //     up: 'up',
+        //     down: 'down',
+        //     left: 'left',
+        //     right: 'right',
+        // })
+
+        
     }
 
     update() {
-        // Mise à jour du jeu
+        this.player.update();
     }
 }

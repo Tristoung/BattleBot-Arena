@@ -12,13 +12,8 @@ export class MenuScene extends Scene {
     preload() {
         this.load.image('backgroundMenu', 'assets/images/background.jpg');
         this.load.image('logo', 'assets/images/logo.png');
-        this.load.image('backButton', 'assets/images/back_arrow.png');
         
         this.load.html('home-menu', 'assets/html_elements/home_menu.html');
-        this.load.html('connected-menu', 'assets/html_elements/connected_menu.html');
-        this.load.html('join-menu', 'assets/html_elements/join_menu.html');
-        this.load.html('create-menu', 'assets/html_elements/create_menu.html');
-        this.load.html('options-menu', 'assets/html_elements/options_menu.html');
     }
 
     create() {
@@ -26,83 +21,32 @@ export class MenuScene extends Scene {
         this.logo = this.add.image(this.scale.width / 2, this.scale.height / 3.5, 'logo');
 
         this.showHomeMenu();
-        this.showBackButton();
+    }
+
+    startGame() {
+        let gameScene = this.scene.start('GameScene');
     }
 
     showHomeMenu() {
         this.goToMenu("home-menu");
 
-        const connectButton = this.getElementByID('home-connect-button');
-        connectButton.addEventListener('click', () => {
+        const playButton = this.getElementByID('home-play-button');
+        playButton.addEventListener('click', () => {
             this.username = this.getElementValueByID('home-username-input');
-            console.log("Votre pseudo : " + this.username);
-
-            this.showConnectedMenu();
-        });
-    }
-
-    showConnectedMenu() {
-        this.goToMenu("connected-menu");
-
-        const joinButton = this.getElementByID('connected-join-button');
-        joinButton.addEventListener('click', () => {
-            console.log("Affiche page join");
-            this.showJoinMenu();
+            console.log("Pseudo entré : " + this.username);
+            this.startGame();
         });
 
-        const createButton = this.getElementByID('connected-create-button');
-        createButton.addEventListener('click', () => {
-            console.log("Affiche page create");
-            this.showCreateMenu();
-        });
-
-        this.backButton.removeAllListeners('pointerdown');
-        this.backButton.on('pointerdown', () => {
-            this.showHomeMenu();
-        });
-        
-        //const connectedTextElement = document.getElementById('connected-text');
-        //connectedTextElement.textContent = "Bienvenue "+this.username+" !";
-    }
-
-    showJoinMenu() {
-        this.goToMenu("join-menu");
-
-        this.backButton.removeAllListeners('pointerdown');
-        this.backButton.on('pointerdown', () => {
-            this.showConnectedMenu();
-        });
-    }
-
-    showCreateMenu() {
-        this.goToMenu("create-menu");
-
-        let code_span = this.getElementByID("create-code")
-        let button = this.getElementByID("create-copy-button");
+        let code_span = this.getElementByID("code")
+        let button = this.getElementByID("copy-button");
         button.addEventListener('click', () => {
             navigator.clipboard.writeText(code_span.textContent);
             button.value = "Copié !";
-        });
-
-        this.backButton.removeAllListeners('pointerdown');
-        this.backButton.on('pointerdown', () => {
-            this.showConnectedMenu();
         });
     }
 
     showParametersMenu() {
         this.goToMenu("options-menu");
-    }
-
-    showBackButton() {
-        this.backButton = this.add.image(this.logo.x - this.logo.width / 2, this.currentMenu.y - this.currentMenu.height / 2, 'backButton');
-        this.backButton.setOrigin(0, 0);
-        this.backButton.setInteractive();
-
-        this.backButton.on('pointerdown', () => {
-            console.log('Clickable image clicked!');
-            // Add your logic here
-        });
     }
 
     goToMenu(menu) {

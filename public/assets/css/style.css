@@ -45,31 +45,8 @@ input[type="submit"]:active {
 #home-username-input {
 
 }
-#home-connect-button {
+#home-play-button {
     
-}
-
-/* Page connected */
-#connected-input-container {
-    display: flex;
-    flex-direction: column;
-}
-
-
-/* Page join */
-#join-input-container-join {
-    flex-direction: row;
-}
-#join-input-container-browse {
-    flex-direction: column;
-}
-
-
-/* Page create */
-
-
-#create-input-container-launch {
-    flex-direction: row;
 }
 
 /* Page options */
