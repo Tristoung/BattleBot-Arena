@@ -50,4 +50,10 @@ input[type="submit"]:active {
 }
 
 /* Page options */
+#settings-icon, #back-icon {
+    cursor: pointer;
+}
+#settings-icon-container {
+    text-align: right;
+}
 

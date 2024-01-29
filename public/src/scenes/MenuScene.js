@@ -7,6 +7,13 @@ export class MenuScene extends Scene {
         });
         this.currentMenu = null;
         this.username = null;
+
+        this.inputs = {
+            up: 'Z',
+            down: 'S',
+            left: 'Q',
+            right: 'D',
+        };
     }
 
     preload() {
@@ -14,6 +21,7 @@ export class MenuScene extends Scene {
         this.load.image('logo', 'assets/images/logo.png');
         
         this.load.html('home-menu', 'assets/html_elements/home_menu.html');
+        this.load.html('options-menu', 'assets/html_elements/options_menu.html');
     }
 
     create() {
@@ -24,7 +32,11 @@ export class MenuScene extends Scene {
     }
 
     startGame() {
-        let gameScene = this.scene.start('GameScene');
+        let data = { 
+            username: this.username, 
+            modifiedInputs: this.inputs, 
+        }
+        let gameScene = this.scene.start('GameScene', data);
     }
 
     showHomeMenu() {
@@ -38,15 +50,46 @@ export class MenuScene extends Scene {
         });
 
         let code_span = this.getElementByID("code")
-        let button = this.getElementByID("copy-button");
-        button.addEventListener('click', () => {
+        let copy_button = this.getElementByID("copy-button");
+        copy_button.addEventListener('click', () => {
             navigator.clipboard.writeText(code_span.textContent);
-            button.value = "Copié !";
+            copy_button.value = "Copié !";
         });
+
+        let settings_button = this.getElementByID('settings-icon');
+        settings_button.addEventListener('click', () => this.showParametersMenu());
     }
 
     showParametersMenu() {
         this.goToMenu("options-menu");
+        let settings_button = this.getElementByID('back-icon');
+        settings_button.addEventListener('click', () => this.showHomeMenu());
+
+        const changeUpButton = this.getElementByID('change-up-button');
+        const changeDownButton = this.getElementByID('change-down-button');
+        const changeLeftButton = this.getElementByID('change-left-button');
+        const changeRightButton = this.getElementByID('change-right-button');
+
+        const updateKey = (key, button) => {
+            button.value = '...';
+    
+            const keyDownHandler = (event) => {
+                event.preventDefault();
+                button.value = event.key.toUpperCase();
+                this.updateInput(key, event.key.toUpperCase());
+                document.removeEventListener('keydown', keyDownHandler);
+            };
+    
+            document.addEventListener('keydown', keyDownHandler);
+        };
+        changeUpButton.addEventListener('click', () => updateKey('up', changeUpButton));
+        changeDownButton.addEventListener('click', () => updateKey('down', changeDownButton));
+        changeLeftButton.addEventListener('click', () => updateKey('left', changeLeftButton));
+        changeRightButton.addEventListener('click', () => updateKey('right', changeRightButton));
+
+
+
+        
     }
 
     goToMenu(menu) {
@@ -62,5 +105,10 @@ export class MenuScene extends Scene {
 
     getElementValueByID(elementID) {
         return this.getElementByID(elementID).value;
+    }
+
+    updateInput(key, value) {
+        this.inputs[key] = value;
+        console.log(`Touche ${key} mise à jour : ${value}`);
     }
 }
